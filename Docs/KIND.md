@@ -4,8 +4,9 @@ Kubernetes is an essential tool for container orchestration, but setting it up l
 
 ### Prerequisites
 
-1. **Docker**: Kind uses Docker to create containers that simulate Kubernetes nodes. You'll need Docker installed and running. You can download Docker from here.
+1. **Docker**: Kind uses Docker to create containers that simulate Kubernetes nodes. You'll need Docker installed and running. You can download Docker from here: https://docs.docker.com/desktop/setup/install/mac-install/ or https://github.com/rancher-sandbox/rancher-desktop/releases 
 2. **Go (Optional)**: You'll need Go installed. Check out the [Go installation guide](https://golang.org/doc/install) if needed.
+4. **Helm**: https://helm.sh/docs/intro/install/
 3. **Command-Line Interface (CLI)**: 
 
 ### Install KIND
