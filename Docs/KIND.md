@@ -11,7 +11,7 @@ Kubernetes is an essential tool for container orchestration, but setting it up l
 
 ### Install KIND
 
-[View Demo Video](KIND-setup.mov)
+[View Demo Video](KIND_setup.mov)
 
 Option 1: macOS/Linux
 
