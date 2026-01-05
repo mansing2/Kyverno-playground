@@ -5,7 +5,7 @@ It assumes you are running a local Kubernetes cluster and want to understand how
 
 
 # Prerequisites
-Before getting started, make sure you have the Kubernetes Cluster set up, just in case you want to set up everything from a scratch refer [K]
+Before getting started, make sure you have the Kubernetes Cluster set up, just in case you want to set up everything from a scratch refer [Playground Setup Guide](Docs/KIND.md)
 
 # Verify Kubernetes Cluster is Working
 Once the Kubernetes cluster is up and running, ensure that pods can be created successfully.
