@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: demo-deployment
+  labels:
+    team: peace 
+spec:
+  selector:
+    matchLabels: 
+      app: demo-deployment
+  replicas: 3
+  template:
+    metadata: 
+      labels:
+        app: demo-deployment
+    spec:
+      containers:
+        - name: demo-container
+          image: public.ecr.aws/z0q2u4h2/demo/kyverno:1.0.0
+          #image: public.ecr.aws/z0q2u4h2/demo/kyverno:1.0.0

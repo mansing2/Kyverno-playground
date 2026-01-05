@@ -1,0 +1,24 @@
+# This is a very popular real-world automation, because many teams want every Deployment to have a standard config file (logging, app defaults, environment metadata, etc.).
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: generate-default-configmap
+spec:
+  generateExisting: true
+  rules:
+    - name: create-default-config-for-deployment
+      match:
+        any:
+          - resources:
+              kinds:
+                - Deployment
+      generate:
+        apiVersion: v1
+        kind: ConfigMap
+        name: "{{request.object.metadata.name}}-default-config"
+        namespace: "{{request.object.metadata.namespace}}"
+        data:
+          data:
+            app.mode: "production"
+            log.level: "info"
+            message: "This is a default generated ConfigMap"
