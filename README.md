@@ -11,18 +11,25 @@ Before getting started, make sure you have the Kubernetes Cluster set up, just i
 Once the Kubernetes cluster is up and running, ensure that pods can be created successfully.
 
 Create a sample NGINX deployment:
-
+```jsx
 kubectl create deployment nginx --image=nginx
+```
 
 Check the pod status: 
+```jsx
+kubectl get pod
+```
 
 # Install Kyverno
 Kyverno is installed using Helm.
 
+```jsx
 helm repo add kyverno https://kyverno.github.io/kyverno/
 helm repo update
 helm install kyverno kyverno/kyverno -n kyverno --create-namespace
+```
 
 Verify Kyversno Installation
-
+```jsx
 kubectl get pods -n kyverno
+```
