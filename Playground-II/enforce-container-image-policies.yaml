@@ -1,0 +1,43 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: enforce-container-image-policies
+spec:
+  validationFailureAction: Enforce # Enforce will reject non-compliant resources, where as Audit will only log them. 
+  rules:
+    - name: require-image-tag
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+      validate:
+        message: "The image tag is invalid. Please specify a valid tag."
+        pattern:
+          spec:
+            containers:
+              - image: "*:*" # "?*" means that the image tag must exist with any value and can not be blank.
+    - name: do-not-use-latest-tag
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+      validate:
+        message: "The image tag 'latest' is not allowed. Please specify a specific version tag."
+        pattern:
+          spec:
+            containers:
+              - image: "!*:latest" # "!*:latest" means that the image tag 'latest' is not allowed.
+    - name: deny-public-registries
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+      validate:
+        message: "The image registry is unknown. Please use images from the approved private registry."
+        pattern:
+          spec:
+            containers:
+              - image: "public.ecr.aws/z0q2u4h2/*" # "!*:latest" means that the image tag 'latest' is not allowed.

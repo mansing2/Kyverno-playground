@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: demo-configmap
+data:
+  # property-like keys; each key maps to a simple value
+  place: "Pune"
+  date : "13th December 2025"

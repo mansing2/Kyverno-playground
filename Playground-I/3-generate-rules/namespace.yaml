@@ -1,0 +1,7 @@
+# Create Namespace with name demo-time
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: demo-time
+  labels:
+    allowedToBeCloned: "true"

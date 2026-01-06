@@ -1,0 +1,30 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-label-and-min-replicas
+spec:
+  validationFailureAction: Enforce # Enforce will reject non-compliant resources, where as Audit will only log them. 
+  rules:
+    - name: require-deployment-team-label
+      match:
+        any:
+        - resources:
+            kinds:
+              - Deployment
+      validate:
+        message: "This deployment does not have label 'team'."
+        pattern:
+          metadata:
+            labels:
+              team: "?*" # "?*" means that the label 'team' must exist with any value and can not be blank.
+    - name: minimum-replicas
+      match:
+        any:
+        - resources:
+            kinds:
+              - Deployment
+      validate:
+        message: "The deployment must have at least 3 replicas."
+        pattern:
+          spec:
+            replicas: ">=3"  # Ensure that the number of replicas is at least 2
