@@ -15,7 +15,7 @@ spec:
       generate:
         apiVersion: v1
         kind: ConfigMap
-        name: "{{request.object.metadata.name}}-default-config"
+        name: "{{request.object.metadata.name}}-config"
         namespace: "{{request.object.metadata.namespace}}"
         data:
           data:

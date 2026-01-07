@@ -3,12 +3,12 @@ kind: Deployment
 metadata:
   name: demo-deployment
   labels:
-    team: peace 
+    teams: peace 
 spec:
   selector:
     matchLabels: 
       app: demo-deployment
-  replicas: 3
+  replicas: 2
   template:
     metadata: 
       labels:
